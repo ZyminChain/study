@@ -2,11 +2,18 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
-
+function toggleTheme() {
+  // Toggle between light and dark themes
+  const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  // Remove the current theme class and add the new one
+  document.documentElement.classList.remove(currentTheme)
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  document.documentElement.classList.add(newTheme)
+}
 </script>
 
 <template>
-  <header class="my-theme">
+  <header class="">
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -20,6 +27,8 @@ import HelloWorld from './components/HelloWorld.vue'
   </header>
 
   <RouterView />
+
+  <button @click="toggleTheme">change theme</button>
 </template>
 
 <style scoped>
